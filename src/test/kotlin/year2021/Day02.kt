@@ -27,12 +27,12 @@ internal class Day02Test {
     }
 
     @Test
-    fun solution1a() {
-        assertEquals(1636725, day02.solution1a(testInputPath))
+    fun solutionA() {
+        assertEquals(1636725, day02.solutionA(testInputPath))
     }
 
     @Test
-    fun solution1b() {
-        assertEquals(1872757425, day02.solution1b(testInputPath))
+    fun solutionB() {
+        assertEquals(1872757425, day02.solutionB(testInputPath))
     }
 }

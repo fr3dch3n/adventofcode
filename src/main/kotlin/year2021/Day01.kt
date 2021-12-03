@@ -26,12 +26,12 @@ class Day01 {
         return countIncreasingSteps(windowSums[0], windowSums.drop(1), 0)
     }
 
-    fun solution1a(path: String): Int {
+    fun solutionA(path: String): Int {
         val ints = readInput(path)
         return countIncreasingSteps(ints[0], ints.drop(1), 0)
     }
 
-    fun solution1b(path: String): Int {
+    fun solutionB(path: String): Int {
         val ints = readInput(path)
         return countIncreasingWindows(ints)
     }

@@ -55,31 +55,32 @@ class Day03 {
         return binToInt(gamma) * binToInt(epsilon)
     }
 
-    fun filterByRule(position: Int, input: List<List<Int>>, mostCommon: Boolean, keep: Int): Int {
+    fun filterByRule(pos: Int, input: List<List<Int>>, mostCommon: Boolean, keep: Int): Int {
         if (input.size == 1) {
             return binToInt(input[0])
         }
-        val numbers = input.map { it[position] }
+        val filteredData: List<List<Int>>
+        val numbers = input.map { it[pos] }
         val zeros = numbers.count { it == 0 }
         val ones = numbers.count { it == 1 }
         if (mostCommon) {
-            return if (ones > zeros) {
-                filterByRule(position + 1, input.filter { it[position] == 1 }, mostCommon, keep)
+            filteredData = if (ones > zeros) {
+                input.filter { it[pos] == 1 }
             } else if (zeros > ones) {
-                filterByRule(position + 1, input.filter { it[position] == 0 }, mostCommon, keep)
+                input.filter { it[pos] == 0 }
             } else {
-                filterByRule(position + 1, input.filter { it[position] == keep }, mostCommon, keep)
+                input.filter { it[pos] == keep }
             }
         } else {
-            return if (zeros > ones) {
-                filterByRule(position + 1, input.filter { it[position] == 1 }, mostCommon, keep)
+            filteredData = if (zeros > ones) {
+                input.filter { it[pos] == 1 }
             } else if (ones > zeros) {
-                filterByRule(position + 1, input.filter { it[position] == 0 }, mostCommon, keep)
+                input.filter { it[pos] == 0 }
             } else {
-                filterByRule(position + 1, input.filter { it[position] == keep }, mostCommon, keep)
+                input.filter { it[pos] == keep }
             }
-
         }
+        return filterByRule(pos + 1, filteredData, mostCommon, keep)
     }
 
     fun calculateLifeSupportRating(input: List<List<Int>>): Int {
@@ -88,12 +89,12 @@ class Day03 {
         return oxygenGeneratorRating * co2ScrubberRating
     }
 
-    fun solution1a(path: String): Int {
+    fun solutionA(path: String): Int {
         val binaries = readInput(path)
         return calculatePowerConsumption(binaries)
     }
 
-    fun solution1b(path: String): Int {
+    fun solutionB(path: String): Int {
         val binaries = readInput(path)
         return calculateLifeSupportRating(binaries)
     }

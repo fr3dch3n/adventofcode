@@ -42,12 +42,12 @@ class Day02 {
         return horizontalStart * depthStart
     }
 
-    fun solution1a(path: String): Int {
+    fun solutionA(path: String): Int {
         val instructions = readInput(path)
         return moveSubmarine(instructions)
     }
 
-    fun solution1b(path: String): Int {
+    fun solutionB(path: String): Int {
         val instructions = readInput(path)
         return moveSubmarineComplicated(instructions)
     }
